@@ -1,5 +1,5 @@
 class Node:
-	def __init__(self,data):
+	def __init__(self,data=None):
 		self.data = data
 		self.left = None
 		self.right = None
@@ -29,11 +29,8 @@ class Node:
 
 
 if __name__ == "__main__":
-	newTree = None
+	newTree = Node()
 	items = list(map(int, "8 5 2 6 9 3 5 4 8 7".split(' ')))
 	for i in range(len(items)):
-		if i == 0:
-			newTree = Node(items[i])
-		else:
-			newTree.insert(items[i])
+		newTree.insert(items[i])
 	newTree.inorderTraversal()
