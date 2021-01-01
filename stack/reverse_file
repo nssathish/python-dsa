@@ -1,22 +1,22 @@
-	reverse_file('/Users/suchithradhanaraj/python-dsa/stack/reverse_file')
-if __name__ == "__main__":
-
-
-	output.close()
-		print('written')
-		output.write(S.pop() + '\n')
-		print('writing')
-	while not S.is_empty():
-	output = open(filename, 'w+')
-
-	original.close()
-		print('pushed')
-		S.push(line.strip('\n'))
-		print('pushing')
-	for line in original:
-	original = open(filename)
-	
-	S = stackusingarray.ArrayStack.ArrayStack()
-def reverse_file(filename):
-
 import stackusingarray.ArrayStack
+
+def reverse_file(filename):
+	S = stackusingarray.ArrayStack.ArrayStack()
+	
+	original = open(filename)
+	for line in original:
+		print('pushing')
+		S.push(line.strip('\n'))
+		print('pushed')
+	original.close()
+
+	output = open(filename, 'w+')
+	while not S.is_empty():
+		print('writing')
+		output.write(S.pop() + '\n')
+		print('written')
+	output.close()
+
+
+if __name__ == "__main__":
+	reverse_file('/Users/suchithradhanaraj/python-dsa/stack/reverse_file')

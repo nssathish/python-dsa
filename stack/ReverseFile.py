@@ -15,4 +15,4 @@ def reverse_file(filename):
 
 
 if __name__ == "__main__":
-	reverse_file('$HOME/python-dsa/stack/reverse_file')
+	reverse_file('/Users/suchithradhanaraj/python-dsa/stack/reverse_file')
