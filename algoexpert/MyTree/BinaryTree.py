@@ -19,7 +19,6 @@ class Node:
 		else:
 			self.data = data
 			
-					
 	def inorderTraversal(self):
 		if self.left:
 			self.left.inorderTraversal()
@@ -27,10 +26,13 @@ class Node:
 		if self.right:
 			self.right.inorderTraversal()
 
+	def levelOrderTraversal(self, nodes=None):
+		nodes = [self]
 
-if __name__ == "__main__":
-	newTree = Node()
-	items = list(map(int, "8 5 2 6 9 3 5 4 8 7".split(' ')))
-	for i in range(len(items)):
-		newTree.insert(items[i])
-	newTree.inorderTraversal()
+		while len(nodes) != 0:
+			node_in_level = nodes[0]
+			del nodes[0]
+			if node_in_level.left is not None:
+				nodes.append(node_in_level.left)
+			if self.right is not None:
+				nodes.append(node_in_level.right)
