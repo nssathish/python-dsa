@@ -32,7 +32,10 @@ class Node:
 		while len(nodes) != 0:
 			node_in_level = nodes[0]
 			del nodes[0]
-			if node_in_level.left is not None:
-				nodes.append(node_in_level.left)
-			if self.right is not None:
-				nodes.append(node_in_level.right)
+
+			if node_in_level is not None:
+				print(node_in_level.data)
+				if node_in_level.left is not None:
+					nodes.append(node_in_level.left)
+				if self.right is not None:
+					nodes.append(node_in_level.right)

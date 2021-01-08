@@ -31,4 +31,5 @@ if __name__ == '__main__':
 	newTree.right = bt.Node(3)
 	newTree.right.left = bt.Node(6); newTree.right.right = bt.Node(7)
 
-	print(branchSums(newTree))
+	#print(branchSums(newTree))
+	newTree.levelOrderTraversal()
