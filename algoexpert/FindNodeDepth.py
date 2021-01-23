@@ -1,3 +1,4 @@
+import MyTree.BinaryTree as bt
 '''
                 1
         2               3
@@ -14,11 +15,25 @@
 
 '''
 def nodeDepths(root, depth=0):
-    if root.left and root.right:
-        depth = depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1)
-    elif root.left:
-        depth += nodeDepths(root.left, depth + 1)
-    elif root.right:
-        depth += nodeDepths(root.right, depth + 1)
+    if root:
+        return depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1)
 
-    return depth
+    return 0
+
+
+if __name__ == '__main__':
+	newTree = bt.Node(1)
+	newTree.left = bt.Node(2)
+
+	newTree.left.left = bt.Node(4)
+	newTree.left.left.left = bt.Node(8); newTree.left.left.right = bt.Node(9)
+
+	newTree.left.right = bt.Node(5)
+	#newTree.left.right.left = bt.Node(10)
+
+	newTree.right = bt.Node(3)
+	newTree.right.left = bt.Node(6); newTree.right.right = bt.Node(7)
+
+	# expected output 16
+	print(nodeDepths(newTree))
+	newTree.levelOrderTraversal()
