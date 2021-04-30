@@ -1,3 +1,12 @@
+'''
+			10
+		      
+         5      15
+               
+      2    5  13   22
+               
+			 12  14
+'''
 class BST:
 	def __init__(self, value):
 		self.value = value
@@ -5,68 +14,77 @@ class BST:
 		self.right = None
 	
 	def insert(self, value):
-				root = self
-				if root is None:
-					root = BST(value)
-				else:
-					while True:
-						if value < root.value:
-							if root.left is None:
-								root.left = BST(value)
-								break
-							else:
-								root = root.left
-						elif value >= root.value:
-							if root.right is None:
-								root.right = BST(value)
-								break
-							else:
-								root = root.right
+		root = self
+		if root is None:
+			root = BST(value)
+		else:
+			while True:
+				if value < root.value:
+					if root.left is None:
+						root.left = BST(value)
+						break
+					else:
+						root = root.left
+				elif value >= root.value:
+					if root.right is None:
+						root.right = BST(value)
+						break
+					else:
+						root = root.right
 
 	def remove(self, value):
-		if value == self.left.value and self.left.left is None and self.left.right is None:
-			self.left = None
-		elif value == self.right.value and self.right.left is None and self.right.right is None:
-			self.right = None
-		elif self.left is not None and value < self.value:
-			self.left.remove(value)
-		elif self.right is not None and value > self.value:
-			self.right.remove(value)
-		else:
-			if self.left is None and self.right is not None:
-				self.value = self.right.value
-				self.right = self.right.right
-			elif self.right is None and self.left is not None:
-				self.value = self.left.value
-				self.left = self.left.left
-			else:
-				obj = self.right
-				parent = self
-				print([self.value, obj.value])
-				while obj.left is not None:
-					parent = obj
-					obj = obj.left
-				print([self.value, obj.value])
-				self.value = obj.value
-				if parent is self:
-					parent.right = obj.right
+		root = self
+
+		if value == root.value:
+			if root.left is None and root.right is not None:
+				root.value = root.right.value
+				root.right = root.right.right
+			elif root.right is None and root.left is not None:
+				root.value = root.left.value
+				root.left = root.left.left
+			elif root.right is not None and root.left is not None:
+				(successor, parent) = root.find_successor(root.right)
+				root.value = successor.value
+				if parent is root:
+					parent.right = successor.right
 				else:
-					parent.left = obj.right
+					parent.left = successor.right
+		else:
+			while True:
+				if root is None:
+					break
+
+				if value < root.value:
+					parent = root
+					root = root.left
+				elif value > root.value:
+					parent = root
+					root = root.right
+				else:
+					(successor, parent) = root.find_successor(root.right)
+					root.value = successor.value
+					parent.left = successor.right
+					break
+
+	def find_successor(self, node):
+		parent = self
+		while node.left is not None:
+			parent = node
+			node = node.left
+
+		return (node, parent)
 
 	def contains(self, value):
 		root = self
 		while True:
 			if root is None:
-				break
+				return False
 			if value == root.value:
 				return True
 			elif value < root.value:
 				root = root.left
 			else:
 				root = root.right
-
-		return False
-
 
 	def display(self):
 		root = self
