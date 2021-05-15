@@ -1,14 +1,9 @@
 def reconstructToBst(preOrderTraversedArray):
     numberOfNodes = len(preOrderTraversedArray)
-
     if numberOfNodes == 0:
         return None
 
     root = BST(preOrderTraversedArray[0])
-    if numberOfNodes == 1:
-        print(f'numberOfNodes is 1, root.value = {root.value}')
-        return root
-
     leftSubTreeArray = []
     rightSubTreeArray = []
     for i in range(1, numberOfNodes):
@@ -21,7 +16,6 @@ def reconstructToBst(preOrderTraversedArray):
     root.left = reconstructToBst(leftSubTreeArray)
     root.right = reconstructToBst(rightSubTreeArray)
 
-    print(f'numberOfNodes is > 1, [root.value, root.left.value, root.right.value = [{root.value, root.left.value, root.right.value}]')
     return root
 
 
