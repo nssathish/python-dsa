@@ -1,21 +1,30 @@
 from StackOps import Stack
 
 
-def isBalanced(expression):
+def isBalanced(expression: str) -> bool:
     new_stack = Stack(len(expression))
     
-    open_braces: list = ['(', '[', '{', '<']
-
     for character in expression:
-        if character in open_braces:
+        if isOpenBracket(character):
             new_stack.push(character)
-        elif (character == ')' and new_stack.peek() == '(') or \
-            (character == ']' and new_stack.peek() == '[') or \
-                (character == '}' and new_stack.peek() == '{') or \
-                    (character == '>' and new_stack.peek() == '<'):
+        elif bracketsMatch(new_stack, character):
             _ = new_stack.pop()
     
     return new_stack.isEmpty()
+
+def bracketsMatch(left: str, right: str) -> bool:
+    return (character == ")" and new_stack.peek() == "(") or \
+            (character == ']' and new_stack.peek() == "[') or \
+                (character == '}' and new_stack.peek() == '{') or \
+                    (character == '>' and new_stack.peek() == '<')
+ 
+ def indexOf(character)
+
+def isOpenBracket(character) -> bool:
+    return character in open_brackets()
+
+def open_brackets():
+    return ['(', '[', '{', '<']
 
 
 if __name__ == '__main__':
