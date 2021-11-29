@@ -1,4 +1,4 @@
-from StackOps import Stack
+from DS.StackOps import Stack
 
 
 def string_reverse(string: str) -> str:

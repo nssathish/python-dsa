@@ -41,6 +41,9 @@ class Queue:
     def isEmpty(self) -> bool:
         return len(self.queue) == 0
     
+    def __str__(self) -> str:
+        return str(self.queue)
+
 
 if __name__ == '__main__':
     new_queue = Queue(5)

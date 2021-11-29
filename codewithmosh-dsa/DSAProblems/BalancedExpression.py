@@ -1,4 +1,4 @@
-from StackOps import Stack
+from DS.StackOps import Stack
 
 
 def isBalanced(expression: str) -> bool:

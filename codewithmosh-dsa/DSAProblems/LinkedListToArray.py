@@ -1,4 +1,4 @@
-from LinearLinkedListOps import LinkedList
+from DS.LinearLinkedListOps import LinkedList
 
 
 def ConvertLinkedListToArray(linked_list):
