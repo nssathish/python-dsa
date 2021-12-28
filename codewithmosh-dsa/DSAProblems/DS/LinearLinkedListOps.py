@@ -1,18 +1,31 @@
-from Node import Node
+from .Node import Node
 
 class LinkedList:
-	def __init__(self, data):
-		self.head = Node(data)
-		self.tail = self.head
+	def __init__(self, data=None):
+		if data is None:
+			self.head = None
+			self.tail = None
+		else:
+			self.head = Node(data)
+			self.tail = self.head
+		
+		self.listSize = 0
 	
 	def addLast(self, data):
-		self.tail.next = Node(data)
-		self.tail = self.tail.next
+		if self.head is None:
+			self.addFirst(data)
+			self.tail = self.head
+		else:
+			self.tail.next = Node(data)
+			self.tail = self.tail.next
+			self.listSize += 1
+		
 	
 	def addFirst(self, data):
 		oldHead = self.head
 		self.head = Node(data)
 		self.head.next = oldHead
+		self.listSize += 1
 	
 	def indexOf(self, data):
 		idx = None
@@ -32,6 +45,7 @@ class LinkedList:
 	
 	def removeFirst(self):
 		self.head = self.head.next
+		self.listSize -= 1
 	
 	def removeLast(self):
 		head = self.head
@@ -40,8 +54,10 @@ class LinkedList:
 
 		head.next = None
 		self.tail = head
+		self.listSize -= 1
 
 	def size(self):
+		'''
 		count = 0
 		head = self.head
 		while head is not None:
@@ -49,6 +65,8 @@ class LinkedList:
 			head = head.next
 
 		return count
+		'''
+		return self.listSize
 
 	def print(self):
 		head = self.head
