@@ -6,22 +6,22 @@ class Stack:
 	
 	def push(self, data: str) -> None:
 		try:
-			if self.top < self.size - 1:
-				self.stack.append(data)
-				self.top += 1
-			else:
+			if self.isFull():
 				raise ValueError("Stack overflow.")
+
+			self.stack.append(data)
+			self.top += 1
 		except ValueError as ex:
 			print(ex)
 	
 	def pop(self) -> str:
 		try:
-			if not self.isEmpty():
-				data = self.stack.pop(self.top)
-				self.top -= 1
-				return data
-			else:
+			if self.isEmpty():
 				raise ValueError("Stack underflow.")
+
+			data = self.stack.pop(self.top)
+			self.top -= 1
+			return data
 		except ValueError as ex:
 			print(ex)
 	
@@ -36,6 +36,9 @@ class Stack:
 	
 	def isEmpty(self) -> bool:
 		return self.top < 0
+
+	def isFull(self) -> bool:
+		return self.top == self.size - 1
 
 	def __str__(self):
 		return ",".join(self.stack)

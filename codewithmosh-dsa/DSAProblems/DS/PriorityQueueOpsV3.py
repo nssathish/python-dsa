@@ -18,8 +18,10 @@ class PriorityQueueOpsV3:
         if self.isEmpty():
             raise ValueError('Queue is Empty')
         
+        removedItem = self.queue[self.count - 1]
         self.queue[self.count - 1] = 0
         self.count -= 1
+        return removedItem
 
     def shiftItemsToInsert(self, item):
         i = self.count - 1
