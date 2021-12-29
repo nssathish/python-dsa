@@ -5,7 +5,6 @@ class Queue:
     def __init__(self, size=0) -> None:
         self.size = size
         self.queue = []
-        self.first = 0
     
     def enqueue(self, value: int) -> None:
         try:
@@ -21,9 +20,9 @@ class Queue:
             if self.isEmpty():
                 raise ValueError("Queue empty")
             
-            first = self.queue[self.first]
-            self.queue[self.first] = 0
-            self.first += 1
+            first = self.queue[0] 
+            del self.queue[0]
+
             return first
         except ValueError as ve:
             print(ve)
